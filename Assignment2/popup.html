@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Summarizer</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    #summary {
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+    .loading {
+      color: #666;
+      font-style: italic;
+    }
+    #error {
+      color: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="summarize">Summarize Page</button>
+  <div id="error"></div>
+  <div id="summary"></div>
+  <script src="popup.js"></script>
+</body>
+</html> 
