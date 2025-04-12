@@ -7,9 +7,10 @@ from PIL import Image as PILImage
 import math
 import sys
 import time
-import subprocess
 import os
-from PIL import ImageDraw, ImageFont, Image as PILImage
+import tkinter as tk
+from tkinter import font as tkfont
+from PIL import Image as PILImage, ImageDraw, ImageFont
 
 # instantiate an MCP server client
 mcp = FastMCP("Calculator")
@@ -153,36 +154,41 @@ def fibonacci_numbers(n: int) -> list:
 
 
 # Global variables for drawing app
-canvas_image = None
-canvas_file_path = "/tmp/drawing_canvas.png"
-preview_process = None
+paint_window = None
+canvas = None
+root = None
+output_file = os.path.expanduser("~/Desktop/paint_output.html")
 
 @mcp.tool()
 async def draw_rectangle(x1: int, y1: int, x2: int, y2: int) -> dict:
-    """Draw a rectangle in the canvas from (x1,y1) to (x2,y2)"""
-    global canvas_image, canvas_file_path
+    """Draw a rectangle in the HTML canvas from (x1,y1) to (x2,y2)"""
+    global output_file
     try:
-        if canvas_image is None:
-            return {
-                "content": [
-                    TextContent(
-                        type="text",
-                        text="Canvas is not open. Please call open_paint first."
-                    )
-                ]
-            }
+        # Read the current HTML file
+        with open(output_file, "r") as f:
+            html_content = f.read()
         
-        # Create a drawing context
-        draw = ImageDraw.Draw(canvas_image)
+        # Create a rectangle element
+        rectangle_style = f"""
+            position: absolute;
+            left: {x1}px;
+            top: {y1}px;
+            width: {x2-x1}px;
+            height: {y2-y1}px;
+            border: 3px solid red;
+            background-color: lightyellow;
+        """
         
-        # Draw rectangle with outline (make it thicker and use a more visible color)
-        draw.rectangle([(x1, y1), (x2, y2)], outline="red", width=5)
+        rectangle_html = f'<div id="rectangle" style="{rectangle_style}"></div>'
         
-        # Also fill with a light color to make it more visible
-        draw.rectangle([(x1+5, y1+5), (x2-5, y2-5)], fill="lightyellow")
+        # Insert the rectangle before the closing div tag
+        html_content = html_content.replace('</div>', f'{rectangle_html}</div>')
         
-        # Save the image (just update the file without closing Preview)
-        canvas_image.save(canvas_file_path)
+        # Write the updated HTML
+        with open(output_file, "w") as f:
+            f.write(html_content)
+        
+        # The browser will automatically refresh the file
         
         return {
             "content": [
@@ -204,101 +210,65 @@ async def draw_rectangle(x1: int, y1: int, x2: int, y2: int) -> dict:
 
 @mcp.tool()
 async def add_text_in_paint(text: str, x1: int = None, y1: int = None, x2: int = None, y2: int = None) -> dict:
-    """Add text to the canvas, optionally within a specified rectangle"""
-    global canvas_image, canvas_file_path
+    """Add text to the HTML canvas, optionally within a specified rectangle"""
+    global output_file
     try:
-        if canvas_image is None:
-            return {
-                "content": [
-                    TextContent(
-                        type="text",
-                        text="Canvas is not open. Please call open_paint first."
-                    )
-                ]
-            }
+        # Read the current HTML file
+        with open(output_file, "r") as f:
+            html_content = f.read()
         
-        # Create a drawing context
-        draw = ImageDraw.Draw(canvas_image)
-        
-        # Try to load a font - try several system fonts that should be available on macOS
-        font = None
-        font_size = 26  # Larger font for better visibility
-        
-        for font_path in [
-            "/System/Library/Fonts/Helvetica.ttc",
-            "/System/Library/Fonts/SFNS.ttf",
-            "/System/Library/Fonts/Supplemental/Arial.ttf",
-            "/System/Library/Fonts/Supplemental/Times New Roman.ttf"
-        ]:
-            try:
-                font = ImageFont.truetype(font_path, font_size)
-                break
-            except:
-                continue
-        
-        if font is None:
-            font = ImageFont.load_default()
-        
-        # If the text is too long, break it into multiple lines
-        max_width = 400  # Maximum width for text in pixels
-        words = text.split()
-        lines = []
-        current_line = []
-        
-        for word in words:
-            test_line = " ".join(current_line + [word])
-            test_width = font.getlength(test_line) if hasattr(font, "getlength") else len(test_line) * (font_size / 2)
-            
-            if test_width <= max_width:
-                current_line.append(word)
-            else:
-                lines.append(" ".join(current_line))
-                current_line = [word]
-        
-        if current_line:
-            lines.append(" ".join(current_line))
-        
-        # If no lines were created (e.g., for very long words), use the original text
-        if not lines:
-            lines = [text]
-        
-        # Calculate text dimensions
-        line_height = font_size + 5  # Add some padding between lines
-        text_height = len(lines) * line_height
-        text_width = max([font.getlength(line) if hasattr(font, "getlength") else len(line) * (font_size / 2) for line in lines])
-        
-        # If rectangle coordinates are provided, center text within that rectangle
+        # Calculate text position
         if all(param is not None for param in [x1, y1, x2, y2]):
-            rect_width = x2 - x1
-            rect_height = y2 - y1
-            
-            # Center text in the rectangle
-            start_x = x1 + (rect_width - text_width) / 2
-            start_y = y1 + (rect_height - text_height) / 2
+            # Position text in the center of the rectangle
+            left = x1 + ((x2 - x1) / 2)
+            top = y1 + ((y2 - y1) / 2)
+            width = x2 - x1 - 20  # Allow some padding
         else:
-            # Center text in the entire canvas
-            width, height = canvas_image.size
-            start_x = (width - text_width) / 2
-            start_y = (height - text_height) / 2
+            # Position text in the center of the canvas
+            left = 500  # Half of canvas width
+            top = 350   # Half of canvas height
+            width = 800  # Default width
         
-        # Draw each line of text
-        for i, line in enumerate(lines):
-            y_position = start_y + i * line_height
-            draw.text((start_x, y_position), line, fill="black", font=font)
+        # Create a text element
+        text_style = f"""
+            position: absolute;
+            left: {left - width/2}px;
+            top: {top - 20}px;
+            width: {width}px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: black;
+            word-wrap: break-word;
+        """
         
-        # Save the image
-        canvas_image.save(canvas_file_path)
+        # Escape any HTML in the text
+        safe_text = text.replace('<', '&lt;').replace('>', '&gt;')
         
-        # Refresh Preview by closing and reopening it
-        try:
-            subprocess.run(["killall", "Preview"], stderr=subprocess.DEVNULL)
-            time.sleep(0.5)
-        except:
-            pass
+        text_html = f'<div id="text" style="{text_style}">{safe_text}</div>'
         
-        # Reopen the file with Preview
-        subprocess.Popen(["open", "-a", "Preview", canvas_file_path])
-        time.sleep(1)  # Wait for Preview to open
+        # Insert the text before the closing div tag
+        html_content = html_content.replace('</div>', f'{text_html}</div>')
+        
+        # Write the updated HTML
+        with open(output_file, "w") as f:
+            f.write(html_content)
+        
+        # Trigger a refresh of the browser by adding a small script
+        refresh_script = """
+        <script>
+        // This script forces a refresh of the page
+        setTimeout(function() { 
+            document.location.reload(true); 
+        }, 100);
+        </script>
+        """
+        
+        # Add the script to force a refresh
+        html_content = html_content.replace('</body>', f'{refresh_script}</body>')
+        
+        with open(output_file, "w") as f:
+            f.write(html_content)
         
         return {
             "content": [
@@ -313,42 +283,66 @@ async def add_text_in_paint(text: str, x1: int = None, y1: int = None, x2: int =
             "content": [
                 TextContent(
                     type="text",
-                    text=f"Error adding text: {str(e)}\n{type(e)}"
+                    text=f"Error adding text: {str(e)}"
                 )
             ]
         }
 
 @mcp.tool()
 async def open_paint() -> dict:
-    """Create a new canvas and open it with Preview on macOS"""
-    global canvas_image, canvas_file_path, preview_process
+    """Create a new HTML-based canvas for drawing"""
+    global output_file
     try:
-        # Create user's Desktop folder path for better visibility
-        desktop_path = os.path.expanduser("~/Desktop")
-        canvas_file_path = os.path.join(desktop_path, "drawing_canvas.png")
+        # Create a simple HTML file with a canvas-like area
+        html_content = """<!DOCTYPE html>
+<html>
+<head>
+    <title>MacOS Paint Equivalent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .canvas-container {
+            width: 1000px;
+            height: 700px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>MacOS Paint Equivalent</h1>
+    <div class="canvas-container" id="canvas">
+        <!-- Elements will be added here -->
+    </div>
+</body>
+</html>
+"""
         
-        # Create a new blank white canvas (1024x768 pixels)
-        canvas_image = PILImage.new('RGB', (1024, 768), color='white')
+        # Write the HTML file
+        with open(output_file, "w") as f:
+            f.write(html_content)
         
-        # Save the canvas to the file
-        canvas_image.save(canvas_file_path)
-        
-        # Make sure Preview is closed first (if it's already open)
-        try:
-            subprocess.run(["killall", "Preview"], stderr=subprocess.DEVNULL)
-            time.sleep(0.5)
-        except:
-            pass
-        
-        # Open the file with Preview app
-        preview_process = subprocess.Popen(["open", "-a", "Preview", canvas_file_path])
-        time.sleep(1)  # Wait for Preview to fully open
+        # Open the file in the default browser
+        import subprocess
+        subprocess.Popen(["open", output_file])
         
         return {
             "content": [
                 TextContent(
                     type="text",
-                    text=f"Canvas created and opened with Preview at {canvas_file_path}"
+                    text=f"Paint equivalent opened at {output_file}"
                 )
             ]
         }
@@ -357,7 +351,7 @@ async def open_paint() -> dict:
             "content": [
                 TextContent(
                     type="text",
-                    text=f"Error creating canvas: {str(e)}"
+                    text=f"Error creating paint equivalent: {str(e)}"
                 )
             ]
         }
