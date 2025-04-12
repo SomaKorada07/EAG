@@ -177,18 +177,46 @@ async def draw_rectangle(x1: int, y1: int, x2: int, y2: int) -> dict:
             height: {y2-y1}px;
             border: 3px solid red;
             background-color: lightyellow;
+            z-index: 10;
         """
         
         rectangle_html = f'<div id="rectangle" style="{rectangle_style}"></div>'
         
-        # Insert the rectangle before the closing div tag
-        html_content = html_content.replace('</div>', f'{rectangle_html}</div>')
+        # Find where to insert the rectangle
+        if '<div class="timestamp">' in html_content:
+            # Insert before the timestamp
+            html_content = html_content.replace('<div class="timestamp">', f'{rectangle_html}<div class="timestamp">')
+        else:
+            # Insert before closing canvas div
+            html_content = html_content.replace('</div></body>', f'{rectangle_html}</div></body>')
+        
+        # Update timestamp to force refresh
+        timestamp = int(time.time())
+        if 'class="timestamp">' in html_content:
+            # Replace existing timestamp
+            import re
+            html_content = re.sub(r'class="timestamp">\d+</div>', f'class="timestamp">{timestamp}</div>', html_content)
         
         # Write the updated HTML
         with open(output_file, "w") as f:
             f.write(html_content)
         
-        # The browser will automatically refresh the file
+        # If we want to force a refresh in case auto-reload isn't working
+        temp_refresh_file = output_file + ".refresh.html"
+        with open(temp_refresh_file, "w") as f:
+            f.write(f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta http-equiv="refresh" content="0;URL='{output_file}?t={timestamp}'">
+            </head>
+            <body>Redirecting...</body>
+            </html>
+            """)
+        
+        # Open the refresh file which will then load the main file
+        import subprocess
+        subprocess.Popen(["open", temp_refresh_file])
         
         return {
             "content": [
@@ -240,6 +268,7 @@ async def add_text_in_paint(text: str, x1: int = None, y1: int = None, x2: int =
             font-size: 18px;
             color: black;
             word-wrap: break-word;
+            z-index: 20;
         """
         
         # Escape any HTML in the text
@@ -247,28 +276,41 @@ async def add_text_in_paint(text: str, x1: int = None, y1: int = None, x2: int =
         
         text_html = f'<div id="text" style="{text_style}">{safe_text}</div>'
         
-        # Insert the text before the closing div tag
-        html_content = html_content.replace('</div>', f'{text_html}</div>')
+        # Find where to insert the text
+        if '<div class="timestamp">' in html_content:
+            # Insert before the timestamp
+            html_content = html_content.replace('<div class="timestamp">', f'{text_html}<div class="timestamp">')
+        else:
+            # Insert before closing canvas div
+            html_content = html_content.replace('</div></body>', f'{text_html}</div></body>')
+        
+        # Update timestamp to force refresh
+        timestamp = int(time.time())
+        if 'class="timestamp">' in html_content:
+            # Replace existing timestamp
+            import re
+            html_content = re.sub(r'class="timestamp">\d+</div>', f'class="timestamp">{timestamp}</div>', html_content)
         
         # Write the updated HTML
         with open(output_file, "w") as f:
             f.write(html_content)
         
-        # Trigger a refresh of the browser by adding a small script
-        refresh_script = """
-        <script>
-        // This script forces a refresh of the page
-        setTimeout(function() { 
-            document.location.reload(true); 
-        }, 100);
-        </script>
-        """
+        # If we want to force a refresh in case auto-reload isn't working
+        temp_refresh_file = output_file + ".refresh.html"
+        with open(temp_refresh_file, "w") as f:
+            f.write(f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta http-equiv="refresh" content="0;URL='{output_file}?t={timestamp}'">
+            </head>
+            <body>Redirecting...</body>
+            </html>
+            """)
         
-        # Add the script to force a refresh
-        html_content = html_content.replace('</body>', f'{refresh_script}</body>')
-        
-        with open(output_file, "w") as f:
-            f.write(html_content)
+        # Open the refresh file which will then load the main file
+        import subprocess
+        subprocess.Popen(["open", temp_refresh_file])
         
         return {
             "content": [
@@ -293,19 +335,43 @@ async def open_paint() -> dict:
     """Create a new HTML-based canvas for drawing"""
     global output_file
     try:
-        # Create a simple HTML file with a canvas-like area
-        html_content = """<!DOCTYPE html>
+        # Create a simple HTML file with a canvas-like area and auto-reload
+        timestamp = int(time.time())  # Add timestamp to prevent caching
+        
+        html_content = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>MacOS Paint Equivalent</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <script>
+        // Auto-reload function - checks for changes every 1 second
+        function setupAutoReload() {{
+            setInterval(function() {{
+                // Make a unique request each time to avoid caching
+                fetch('{output_file}?t=' + new Date().getTime())
+                    .then(response => response.text())
+                    .then(html => {{
+                        if (html !== document.documentElement.outerHTML) {{
+                            location.reload(true);
+                        }}
+                    }})
+                    .catch(err => console.error('Error checking for updates:', err));
+            }}, 1000); // Check every second
+        }}
+        
+        // Start auto-reload when page loads
+        window.onload = setupAutoReload;
+    </script>
     <style>
-        body {
+        body {{
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #f0f0f0;
-        }
-        .canvas-container {
+        }}
+        .canvas-container {{
             width: 1000px;
             height: 700px;
             margin: 0 auto;
@@ -314,17 +380,25 @@ async def open_paint() -> dict:
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-        }
-        h1 {
+        }}
+        h1 {{
             text-align: center;
             color: #333;
-        }
+        }}
+        .timestamp {{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 10px;
+            color: #ccc;
+        }}
     </style>
 </head>
 <body>
     <h1>MacOS Paint Equivalent</h1>
     <div class="canvas-container" id="canvas">
         <!-- Elements will be added here -->
+        <div class="timestamp">{timestamp}</div>
     </div>
 </body>
 </html>
