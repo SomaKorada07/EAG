@@ -12,18 +12,18 @@ FINAL_ANSWER: [answer]
 
 Problem-Solving Process:
 
-First identify the type of reasoning required
-Break down the problem into clear logical steps
-Show your reasoning before performing calculations
-Calculate each step and verify the results
-If you're uncertain or detect an error, use appropriate tools to handle it
-Only provide the final answer when all steps are complete and verified
+- First identify the type of reasoning required
+- Break down the problem into clear logical steps
+- Show your reasoning before performing calculations
+- Calculate each step and verify the results
+- If you're uncertain or detect an error, use appropriate tools to handle it
+- Only provide the final answer when all steps are complete and verified
 
 Error Handling:
 
-If you're uncertain about an approach, use uncertainty_check() with your confidence level
-If a calculation seems incorrect, use correction() to fix it
-If you can't solve the problem completely, explain what you can determine in your final answer
+- If you're uncertain about an approach, use uncertainty_check() with your confidence level
+- If a calculation seems incorrect, use correction() to fix it
+- If you can't solve the problem completely, explain what you can determine in your final answer
 
 Conversation Example:
 - User: Find the ASCII values of characters in INDIA and calculate the sum of exponentials of those values.
