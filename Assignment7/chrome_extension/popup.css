@@ -1,0 +1,141 @@
+:root {
+  --primary-color: #4285f4;
+  --secondary-color: #34a853;
+  --background-color: #ffffff;
+  --text-color: #202124;
+  --border-color: #dadce0;
+  --highlight-color: #fbbc05;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 380px;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  padding: 16px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 16px 0;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+#search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+}
+
+#search-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.status-container {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #5f6368;
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-container p {
+  margin: 0;
+}
+
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.result-item {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+.result-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.result-url {
+  font-size: 12px;
+  color: #5f6368;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#index-page-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+#index-page-button:hover {
+  background-color: #2d9247;
+}
+
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.highlight-text {
+  background-color: var(--highlight-color);
+  padding: 2px 0;
+}

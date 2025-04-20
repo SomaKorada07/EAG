@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAISS Web Search</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>FAISS Web Search</h1>
+    
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search indexed web content...">
+      <button id="search-button">Search</button>
+    </div>
+    
+    <div class="status-container">
+      <p>Indexed Pages: <span id="total-urls">-</span></p>
+      <p>Indexed Chunks: <span id="total-chunks">-</span></p>
+    </div>
+    
+    <div class="search-results" id="search-results">
+      <!-- Results will be displayed here -->
+    </div>
+    
+    <div class="actions">
+      <button id="index-page-button">Index Current Page</button>
+      <div class="spinner" id="spinner"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

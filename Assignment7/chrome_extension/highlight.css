@@ -1,0 +1,21 @@
+.faiss-highlight {
+  background-color: #fbbc05;
+  padding: 2px 0;
+}
+
+.faiss-active-highlight {
+  background-color: #f8786d;
+  padding: 2px 0;
+}
+
+.faiss-tooltip {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 10000;
+  max-width: 300px;
+  pointer-events: none;
+}

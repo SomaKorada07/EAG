@@ -1,0 +1,6 @@
+venv
+.DS_Store
+*.pyc
+faiss_index/.env
+uv.lock
+pyproject.toml
