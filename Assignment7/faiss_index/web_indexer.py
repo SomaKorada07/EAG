@@ -176,7 +176,7 @@ class WebPageIndexer:
             print(f"⚠️ No chunks were successfully processed from {url}")
     
     def search(self, query: str, k: int = 5) -> List[Dict[str, Any]]:
-        """Search the index for relevant content"""
+        """Search the index for relevant content with URL deduplication and relevance filtering"""
         if not self.metadata or self.index.ntotal == 0:
             return []
             
@@ -185,19 +185,77 @@ class WebPageIndexer:
             query_embedding = self.get_embedding(query)
             query_embedding = query_embedding.reshape(1, -1)
             
-            # Search index
-            distances, indices = self.index.search(query_embedding, k=min(k, len(self.metadata)))
+            # Search index - get more results than needed so we can filter
+            max_results = min(k * 5, len(self.metadata))
+            distances, indices = self.index.search(query_embedding, k=max_results)
             
-            # Prepare results
+            # Prepare results with URL deduplication and relevance threshold
             results = []
+            seen_urls = set()
+            
+            # Convert distances to similarity scores (closer to 1.0 is better)
+            # L2 distance needs to be converted to similarity
+            max_dist = float(distances[0].max()) if distances[0].size > 0 else 1.0
+            min_dist = float(distances[0].min()) if distances[0].size > 0 else 0.0
+            dist_range = max(0.001, max_dist - min_dist)  # Avoid division by zero
+            
             for i, idx in enumerate(indices[0]):
                 if idx >= len(self.metadata) or idx < 0:  # Guard against out-of-bounds
                     continue
-                    
-                result = self.metadata[idx].copy()
-                result["score"] = float(distances[0][i])
-                results.append(result)
                 
+                # Calculate normalized similarity score (0 to 1)
+                # For L2 distance, smaller is better, so we invert it
+                dist = float(distances[0][i])
+                similarity = 1.0 - ((dist - min_dist) / dist_range)
+                
+                # Skip low relevance results
+                if similarity < 0.6:  # Threshold for relevance
+                    continue
+                
+                result = self.metadata[idx].copy()
+                result["score"] = similarity
+                result["distance"] = dist  # Keep the original distance too
+                
+                # Check keyword relevance as additional filter
+                text_lower = result["text"].lower()
+                query_terms = query.lower().split()
+                term_matches = sum(1 for term in query_terms if term in text_lower)
+                
+                # Skip if no query terms match at all
+                if len(query_terms) >= 2 and term_matches == 0:
+                    continue
+                
+                # Only include this result if we haven't seen this URL before
+                url = result.get("url", "")
+                if url and url not in seen_urls:
+                    seen_urls.add(url)
+                    results.append(result)
+                
+                # Stop once we have enough unique URLs
+                if len(results) >= k:
+                    break
+            
+            # Double check we have some results even if they're slightly below threshold
+            if not results and distances.size > 0:
+                # Try again with a lower threshold
+                for i, idx in enumerate(indices[0][:min(5, indices[0].size)]):
+                    if idx >= len(self.metadata) or idx < 0:
+                        continue
+                    
+                    dist = float(distances[0][i])
+                    similarity = 1.0 - ((dist - min_dist) / dist_range)
+                    
+                    result = self.metadata[idx].copy()
+                    result["score"] = similarity
+                    
+                    url = result.get("url", "")
+                    if url and url not in seen_urls:
+                        seen_urls.add(url)
+                        results.append(result)
+                        
+                    if len(results) >= 2:  # Just get a couple of results in this case
+                        break
+                    
             return results
             
         except Exception as e:

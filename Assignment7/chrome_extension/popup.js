@@ -67,65 +67,92 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="result-text">${highlightText(escapeHtml(result.text), query)}</div>
       `;
       
-      // Add click event to navigate to the result URL
+      // Add click event to navigate to the result URL and highlight content
       resultElement.querySelector('.result-title').addEventListener('click', () => {
-        // Send message to highlight this specific result on the page
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-          const activeTab = tabs[0];
-          if (activeTab) {
-            // Navigate to the URL if we're not already there
-            if (activeTab.url !== result.url) {
-              chrome.tabs.update(activeTab.id, {url: result.url}, function() {
-                // Wait for page load and then send highlight message
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                  if (tabId === activeTab.id && changeInfo.status === 'complete') {
-                    chrome.tabs.onUpdated.removeListener(listener);
-                    
-                    // Give the page a moment to fully render
-                    setTimeout(() => {
-                      sendHighlightMessage(activeTab.id, query, result.position);
-                    }, 1000);
-                  }
-                });
-              });
-            } else {
-              // Already on the correct page, just send highlight message
-              sendHighlightMessage(activeTab.id, query, result.position);
-            }
-          }
-        });
+        // Store data in localStorage to use after navigation
+        localStorage.setItem('faiss_highlight_query', query);
+        localStorage.setItem('faiss_highlight_position', JSON.stringify(result.position || {}));
+        localStorage.setItem('faiss_highlight_text', result.text);
+        
+        // Open in new tab
+        openAndHighlight(result.url, query, result.text, result.position);
       });
       
       searchResults.appendChild(resultElement);
     });
   }
   
-  function sendHighlightMessage(tabId, query, position) {
-    // Try to send message to the content script
-    chrome.tabs.sendMessage(tabId, {
-      action: 'highlight',
-      query: query,
-      position: position
-    }, response => {
-      // If the content script isn't loaded, inject it and try again
-      if (chrome.runtime.lastError) {
-        console.log("Content script not loaded, injecting it now");
+  function openAndHighlight(url, query, text, position) {
+    console.log("Opening URL and preparing to highlight:", url);
+    console.log("Text to highlight:", text.substring(0, 100) + "...");
+    
+    // Create a new tab with the URL
+    chrome.tabs.create({ url: url }, newTab => {
+      console.log("Created new tab with ID:", newTab.id);
+      
+      // Create a listener for tab updates that injects our content script and highlights content
+      function tabUpdateListener(tabId, changeInfo, tab) {
+        console.log("Tab update:", tabId, changeInfo.status);
         
-        // Ask the background script to inject the content script
-        chrome.runtime.sendMessage({
-          action: 'injectContentScript',
-          tabId: tabId
-        }, () => {
-          // Wait a moment for the script to load
-          setTimeout(() => {
-            chrome.tabs.sendMessage(tabId, {
-              action: 'highlight',
-              query: query,
-              position: position
+        if (tabId === newTab.id && changeInfo.status === 'complete') {
+          console.log("Tab fully loaded, preparing to inject scripts");
+          // Remove the listener once it's triggered
+          chrome.tabs.onUpdated.removeListener(tabUpdateListener);
+          
+          // Ensure the content script is injected
+          chrome.scripting.executeScript({
+            target: { tabId: newTab.id },
+            files: ['contentScript.js']
+          }, () => {
+            console.log("Content script injected");
+            
+            // Also inject the CSS
+            chrome.scripting.insertCSS({
+              target: { tabId: newTab.id },
+              files: ['highlight.css']
+            }, () => {
+              console.log("CSS injected");
+              
+              // Ping the content script to make sure it's ready
+              chrome.tabs.sendMessage(newTab.id, { action: 'ping' }, (pingResponse) => {
+                if (pingResponse && pingResponse.status === 'ok') {
+                  console.log("Content script is responsive, proceeding with highlight");
+                  
+                  // Wait for the page to fully render
+                  setTimeout(() => {
+                    console.log("Sending highlight message");
+                    // Send the highlight message
+                    chrome.tabs.sendMessage(newTab.id, {
+                      action: 'highlight',
+                      query: query,
+                      text: text,
+                      position: position
+                    }, response => {
+                      console.log('Highlight response:', response);
+                    });
+                  }, 2000); // Longer delay to ensure page is fully loaded
+                } else {
+                  console.error("Content script not responding after injection, retrying once");
+                  // If we didn't get a response, try once more after a delay
+                  setTimeout(() => {
+                    chrome.tabs.sendMessage(newTab.id, {
+                      action: 'highlight',
+                      query: query,
+                      text: text,
+                      position: position
+                    }, response => {
+                      console.log('Highlight retry response:', response);
+                    });
+                  }, 5000); // Longer retry delay
+                }
+              });
             });
-          }, 500);
-        });
+          });
+        }
       }
+      
+      // Register the listener before navigating
+      chrome.tabs.onUpdated.addListener(tabUpdateListener);
     });
   }
   
@@ -263,17 +290,49 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function highlightText(text, query) {
-    // Simple highlighting - can be improved with better matching
-    const words = query.split(' ').filter(word => word.length > 2);
+    // More semantic highlighting for result previews
+    const queryLower = query.toLowerCase();
+    const textLower = text.toLowerCase();
+    
+    // If the exact query exists in the text, highlight it
+    if (textLower.includes(queryLower)) {
+      const startIndex = textLower.indexOf(queryLower);
+      const endIndex = startIndex + queryLower.length;
+      
+      return text.substring(0, startIndex) + 
+             `<span class="highlight-text">${text.substring(startIndex, endIndex)}</span>` + 
+             text.substring(endIndex);
+    }
+    
+    // Otherwise, try to highlight key phrases or concepts
+    const words = query.split(' ').filter(word => word.length > 3);
     let highlightedText = text;
     
-    words.forEach(word => {
-      const regex = new RegExp(word, 'gi');
-      highlightedText = highlightedText.replace(regex, match => 
+    // First find important phrases (2+ words together)
+    for (let i = 0; i < words.length - 1; i++) {
+      const phrase = words[i] + ' ' + words[i+1];
+      const phraseRegex = new RegExp(escapeRegExp(phrase), 'gi');
+      highlightedText = highlightedText.replace(phraseRegex, match => 
         `<span class="highlight-text">${match}</span>`
       );
+    }
+    
+    // Then highlight individual important words
+    words.forEach(word => {
+      // Only highlight important words (longer than 3 chars)
+      if (word.length > 3) {
+        const wordRegex = new RegExp(`\\b${escapeRegExp(word)}\\b`, 'gi');
+        highlightedText = highlightedText.replace(wordRegex, match => 
+          `<span class="highlight-text">${match}</span>`
+        );
+      }
     });
     
     return highlightedText;
+  }
+  
+  // Helper function to escape special regex characters
+  function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 });

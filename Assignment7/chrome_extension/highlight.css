@@ -4,18 +4,53 @@
 }
 
 .faiss-active-highlight {
-  background-color: #f8786d;
-  padding: 2px 0;
+  background-color: rgba(255, 87, 34, 0.5) !important; /* More opaque background */
+  border: 3px solid #ff5722 !important; /* Thicker border */
+  border-radius: 4px !important;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.7) !important; /* Stronger glow */
+  padding: 10px !important;
+  transition: all 0.3s ease-in-out !important;
+  animation: faiss-pulse 1.5s infinite !important; /* Faster animation */
+  color: inherit !important;
+  display: inline-block !important; /* Changed to inline-block for text spans */
+  margin: 2px 0 !important;
+  z-index: 999999 !important; /* Ensure it's on top */
+  font-weight: inherit !important; /* Preserve original font weight */
+}
+
+/* Special styling for span-level highlights */
+span.faiss-active-highlight {
+  display: inline !important;
+  padding: 0 !important;
+  border-radius: 2px !important;
+  border-width: 2px !important;
+}
+
+@keyframes faiss-pulse {
+  0% { box-shadow: 0 0 5px rgba(255, 87, 34, 0.5); }
+  50% { box-shadow: 0 0 15px rgba(255, 87, 34, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(255, 87, 34, 0.5); }
 }
 
 .faiss-tooltip {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  z-index: 10000;
-  max-width: 300px;
-  pointer-events: none;
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  background-color: rgba(33, 33, 33, 0.9) !important;
+  color: white !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-family: Arial, sans-serif !important;
+  z-index: 10000 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  border-left: 4px solid #ff5722 !important;
+  max-width: 400px !important;
+  animation: faiss-slide-in 0.5s ease-out !important;
+  pointer-events: auto !important;
+}
+
+@keyframes faiss-slide-in {
+  0% { transform: translateX(100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
 }
