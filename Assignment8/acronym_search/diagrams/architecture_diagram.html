@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agentic AI System Architecture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0066cc;
+        }
+        .diagram-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+        .component-box {
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 220px;
+            margin: 0 auto;
+        }
+        .component-box:hover {
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        .component-box h3 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #0066cc;
+        }
+        .component-box p {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        .flow {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f0f7ff;
+        }
+        .tools {
+            background-color: #e6f2ff;
+        }
+        .row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .arrow {
+            position: absolute;
+            color: #0066cc;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .arrow-label {
+            position: absolute;
+            font-size: 12px;
+            color: #555;
+        }
+        .workflow-step {
+            margin: 10px auto;
+            width: 220px;
+        }
+        .workflow-arrow {
+            text-align: center;
+            font-size: 24px;
+            color: #0066cc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agentic AI System Architecture</h1>
+    
+    <p>A modular system for searching acronyms and posting results to Slack</p>
+    
+    <div class="diagram-container">
+        <h2>System Components</h2>
+        
+        <!-- Row 0: Slack Users (Above main diagram structure) -->
+        <div class="row" style="height: 100px;">
+            <div style="width: 33.3%"></div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>Slack Users</h3>
+                    <p>User interface through Slack channels</p>
+                </div>
+            </div>
+            <div style="width: 33.3%"></div>
+            
+            <!-- Column 2: Slack Users to SSE Client -->
+            <div class="arrow" style="top: 88px; left: 50%; transform: rotate(90deg);">→</div>
+            <div class="arrow-label" style="top: 95px; left: 52%;">Messages</div>
+        </div>
+        
+        <!-- Row 1: MCP SSE Server, SSE Client, LLM Perception (3 columns) -->
+        <div class="row" style="height: 120px;">
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>MCP SSE Server</h3>
+                    <p>Provides tools via Model-Context-Protocol</p>
+                </div>
+            </div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>SSE Client</h3>
+                    <p>Orchestrates agent workflow and handles Slack events</p>
+                </div>
+            </div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>LLM Perception</h3>
+                    <p>Gemini 2.0 for understanding and decision making</p>
+                </div>
+            </div>
+            
+            <!-- Column 3: LLM Perception to Action Performer -->
+            <div class="arrow" style="top: 120px; left: 83.3%; transform: rotate(90deg);">→</div>
+            
+            <!-- Column 2: SSE Client to Decision Maker -->
+            <div class="arrow" style="top: 120px; left: 50%; transform: rotate(90deg);">→</div>
+            
+            <!-- Column 1: MCP SSE Server to External APIs -->
+            <div class="arrow" style="top: 120px; left: 16.7%; transform: rotate(90deg);">→</div>
+            
+            <!-- Row 2: SSE Client to MCP SSE Server and SSE Client to LLM Perception -->
+            <div class="arrow" style="top: 50px; left: 33%; transform: rotate(180deg);">→</div>
+            <div class="arrow-label" style="top: 40px; left: 33%;">Tools</div>
+            
+            <div class="arrow" style="top: 50px; left: 67%;">→</div>
+            <div class="arrow-label" style="top: 40px; left: 67%;">Query</div>
+        </div>
+        
+        <!-- Row 2: External APIs, Decision Maker, Action Performer (3 columns) -->
+        <div class="row" style="height: 120px; margin-top: 50px;">
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>External APIs</h3>
+                    <p>PayPal acronym service and other APIs</p>
+                </div>
+            </div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>Decision Maker</h3>
+                    <p>Determines next actions based on inputs and context</p>
+                </div>
+            </div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>Action Performer</h3>
+                    <p>Executes tools with proper parameter handling</p>
+                </div>
+            </div>
+            
+            <!-- Column 2: Decision Maker to Memory Handler -->
+            <div class="arrow" style="top: 107px; left: 50%; transform: rotate(90deg);">→</div>
+            
+            <!-- Row 3: Action Performer to Decision Maker -->
+            <div class="arrow" style="top: 50px; left: 67%; transform: rotate(180deg);">→</div>
+        </div>
+        
+        <!-- No column connections between rows -->
+        
+        <!-- Row 3: Memory Handler and Logging System (columns 2 and 3 only) -->
+        <div class="row" style="height: 120px; margin-top: 20px;">
+            <div style="width: 33.3%">
+                <!-- Empty space for alignment -->
+            </div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>Memory Handler</h3>
+                    <p>Maintains state across interactions</p>
+                </div>
+            </div>
+            <div style="width: 33.3%">
+                <div class="component-box">
+                    <h3>Logging System</h3>
+                    <p>Centralized logging with timestamp-based filenames</p>
+                </div>
+            </div>
+            
+            <!-- Column 2: Memory Handler to Decision Maker -->
+            <!-- <div class="arrow" style="top: 350px; left: 50%; transform: rotate(270deg);">→</div> -->
+        </div>
+        
+        <!-- No column connections to Row 3 -->
+    </div>
+    
+    <div class="flow">
+        <h2>Data Flow</h2>
+        <ol>
+            <li>User sends message to Slack Bot</li>
+            <li>SSE Client receives message and starts agent workflow</li>
+            <li>LLM Perception generates decision using Gemini 2.0</li>
+            <li>Decision Maker determines next action based on LLM response</li>
+            <li>Action Performer executes the appropriate tool</li>
+            <li>MCP SSE Server provides tools like acronym_search and post_slack_message</li>
+            <li>Memory Handler maintains state across iterations</li>
+            <li>Logging System records all activities with timestamps</li>
+        </ol>
+    </div>
+    
+    <div class="diagram-container tools">
+        <h2>Available Tools</h2>
+        <ul>
+            <li><strong>acronym_search</strong>: Fetches acronym definitions from PayPal internal API</li>
+            <li><strong>post_slack_message</strong>: Sends messages to specified Slack channel</li>
+            <li><strong>finish_task</strong>: Terminates agent execution with success/failure message</li>
+        </ul>
+    </div>
+    
+    <div class="diagram-container">
+        <h2>Agent Workflow</h2>
+        <p>The agent operates through iterations (max: 5) until task completion or error</p>
+        <div>
+            <div class="component-box workflow-step">Start: User Query</div>
+            <div class="workflow-arrow">↓</div>
+            <div class="component-box workflow-step">LLM Decision</div>
+            <div class="workflow-arrow">↓</div>
+            <div class="component-box workflow-step">Tool Execution</div>
+            <div class="workflow-arrow">↓</div>
+            <div class="component-box workflow-step">State Update</div>
+            <div class="workflow-arrow">↓</div>
+            <div class="component-box workflow-step">Next Iteration or Complete</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+python-telegram-bot
+fastapi
+uvicorn
+httpx
+beautifulsoup4
+aiohttp
+google-auth
+google-auth-oauthlib
+google-api-python-client
+mcp
+fastmcp
+telethon
+python-telegram-bot[webhooks]

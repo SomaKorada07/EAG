@@ -1,0 +1,302 @@
+2025-05-17 23:28:36 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 0053dc26-b017-4326-89af-511368769b5d)
+2025-05-17 23:28:36 - 57865 - slack_bolt.App - base_handler.py:51 - INFO - ⚡️ Bolt app is running!
+2025-05-17 23:28:36 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 0053dc26-b017-4326-89af-511368769b5d)
+2025-05-17 23:28:58 - 57865 - sse_client.py:handle_messages - sse_client.py:108 - INFO - Received message from U03Q0MQT6RZ in C08SGJ6UEF8 (type: group): what is RCA?
+2025-05-17 23:28:58 - 57865 - sse_client.py:handle_messages - sse_client.py:116 - INFO - Running async client for user U03Q0MQT6RZ in channel C08SGJ6UEF8
+2025-05-17 23:28:58 - 57865 - memory_handler - memory_handler.py:13 - INFO - State file state.json has been removed.
+2025-05-17 23:28:58 - 57865 - mcp.client.sse - sse.py:47 - INFO - Connecting to SSE endpoint: http://localhost:3000/sse
+2025-05-17 23:28:58 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: GET http://localhost:3000/sse "HTTP/1.1 200 OK"
+2025-05-17 23:28:58 - 57865 - mcp.client.sse - sse.py:67 - INFO - Received endpoint URL: http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e
+2025-05-17 23:28:58 - 57865 - mcp.client.sse - sse.py:140 - INFO - Starting post writer with endpoint URL: http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e
+2025-05-17 23:28:58 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e "HTTP/1.1 202 Accepted"
+2025-05-17 23:28:58 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e "HTTP/1.1 202 Accepted"
+2025-05-17 23:28:58 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e "HTTP/1.1 202 Accepted"
+2025-05-17 23:28:58 - 57865 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 1 ---
+2025-05-17 23:29:00 - 57865 - paypal_transport_injection - paypal_transport_injection.py:71 - INFO - Create paypal_transport_injection gRPC channel
+2025-05-17 23:29:03 - 57865 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'acronym_search', 'params': ['RCA'], 'final_ans': 'None', 'reasoning_type': 'search'}
+2025-05-17 23:29:03 - 57865 - action_performer - action_performer.py:11 - INFO - params are: ['RCA']
+2025-05-17 23:29:03 - 57865 - action_performer - action_performer.py:16 - INFO - param_name: ACRONYM, info: {'title': 'ACRONYM', 'type': 'string'}
+2025-05-17 23:29:03 - 57865 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['RCA']
+2025-05-17 23:29:03 - 57865 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: RCA
+2025-05-17 23:29:03 - 57865 - action_performer - action_performer.py:41 - INFO - string value: RCA
+2025-05-17 23:29:03 - 57865 - action_performer - action_performer.py:49 - INFO - Sending argument: {'ACRONYM': 'RCA'}
+2025-05-17 23:29:03 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e "HTTP/1.1 202 Accepted"
+2025-05-17 23:29:04 - 57865 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'acronym_search', 'params': [], 'final_ans': 'None', 'reasoning_type': 'search'}, 'tool': 'acronym_search', 'params': {'ACRONYM': 'RCA'}, 'result': {'0': 'Root Cause Analysis', '1': 'Review Cause Analysis', '2': 'Recurring Continuing Activity'}}
+2025-05-17 23:29:04 - 57865 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 2 ---
+2025-05-17 23:29:05 - 57865 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'post_slack_message', 'params': ['Root Cause Analysis', 'Review Cause Analysis', 'Recurring Continuing Activity'], 'final_ans': 'None', 'reasoning_type': 'search'}
+2025-05-17 23:29:05 - 57865 - action_performer - action_performer.py:11 - INFO - params are: ['Root Cause Analysis', 'Review Cause Analysis', 'Recurring Continuing Activity']
+2025-05-17 23:29:05 - 57865 - action_performer - action_performer.py:16 - INFO - param_name: data, info: {'title': 'data', 'type': 'string'}
+2025-05-17 23:29:05 - 57865 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['Root Cause Analysis', 'Review Cause Analysis', 'Recurring Continuing Activity']
+2025-05-17 23:29:05 - 57865 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: Root Cause Analysis
+2025-05-17 23:29:05 - 57865 - action_performer - action_performer.py:41 - INFO - string value: • Root Cause Analysis
+• Review Cause Analysis
+• Recurring Continuing Activity
+2025-05-17 23:29:05 - 57865 - action_performer - action_performer.py:49 - INFO - Sending argument: {'data': '• Root Cause Analysis\n• Review Cause Analysis\n• Recurring Continuing Activity'}
+2025-05-17 23:29:05 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e "HTTP/1.1 202 Accepted"
+2025-05-17 23:29:06 - 57865 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'post_slack_message', 'params': ['Review Cause Analysis', 'Recurring Continuing Activity'], 'final_ans': 'None', 'reasoning_type': 'search'}, 'tool': 'post_slack_message', 'params': {'data': '• Root Cause Analysis\n• Review Cause Analysis\n• Recurring Continuing Activity'}, 'result': 'Message sent successfully'}
+2025-05-17 23:29:06 - 57865 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 3 ---
+2025-05-17 23:29:08 - 57865 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'finish_task', 'params': ['The acronym details were successfully fetched and the details were posted in Slack.'], 'final_ans': 'Task completed successfully.', 'reasoning_type': 'success'}
+2025-05-17 23:29:08 - 57865 - action_performer - action_performer.py:11 - INFO - params are: ['The acronym details were successfully fetched and the details were posted in Slack.']
+2025-05-17 23:29:08 - 57865 - action_performer - action_performer.py:16 - INFO - param_name: message, info: {'title': 'Message', 'type': 'string'}
+2025-05-17 23:29:08 - 57865 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['The acronym details were successfully fetched and the details were posted in Slack.']
+2025-05-17 23:29:08 - 57865 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: The acronym details were successfully fetched and the details were posted in Slack.
+2025-05-17 23:29:08 - 57865 - action_performer - action_performer.py:41 - INFO - string value: The acronym details were successfully fetched and the details were posted in Slack.
+2025-05-17 23:29:08 - 57865 - action_performer - action_performer.py:49 - INFO - Sending argument: {'message': 'The acronym details were successfully fetched and the details were posted in Slack.'}
+2025-05-17 23:29:08 - 57865 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=85aee58f83d64c7199fcbc85687e242e "HTTP/1.1 202 Accepted"
+2025-05-17 23:29:08 - 57865 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'finish_task', 'params': [], 'final_ans': 'Task completed successfully.', 'reasoning_type': 'success'}, 'tool': 'finish_task', 'params': {'message': 'The acronym details were successfully fetched and the details were posted in Slack.'}, 'result': {'response': 'The acronym details were successfully fetched and the details were posted in Slack.'}}
+2025-05-17 23:29:08 - 57865 - sse_client.py:handle_messages - sse_client.py:121 - INFO - Response from async client: {'response': 'The acronym details were successfully fetched and the details were posted in Slack.'}
+2025-05-18 02:18:25 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 0053dc26-b017-4326-89af-511368769b5d, reason: disconnected for 74+ seconds)
+2025-05-18 02:18:25 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 0053dc26-b017-4326-89af-511368769b5d)
+2025-05-18 02:18:25 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 0053dc26-b017-4326-89af-511368769b5d)
+2025-05-18 02:18:25 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 02:18:26 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 0053dc26-b017-4326-89af-511368769b5d)
+2025-05-18 02:18:26 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 75150369-b71f-4326-bec9-8dbd114c6966)
+2025-05-18 02:18:26 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 02:18:26 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 0053dc26-b017-4326-89af-511368769b5d)
+2025-05-18 02:18:26 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 75150369-b71f-4326-bec9-8dbd114c6966)
+2025-05-18 02:54:15 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 75150369-b71f-4326-bec9-8dbd114c6966, reason: disconnected for 1708+ seconds)
+2025-05-18 02:54:17 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 75150369-b71f-4326-bec9-8dbd114c6966)
+2025-05-18 02:54:17 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 75150369-b71f-4326-bec9-8dbd114c6966)
+2025-05-18 02:54:17 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 02:54:19 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 75150369-b71f-4326-bec9-8dbd114c6966)
+2025-05-18 02:54:19 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8)
+2025-05-18 02:54:19 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 02:54:19 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 75150369-b71f-4326-bec9-8dbd114c6966)
+2025-05-18 02:54:19 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8)
+2025-05-18 03:11:33 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8, reason: disconnected for 1023+ seconds)
+2025-05-18 03:11:33 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8)
+2025-05-18 03:11:33 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8)
+2025-05-18 03:11:33 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 03:11:34 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8)
+2025-05-18 03:11:34 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 5bd48c13-385e-4510-879d-61848074fb79)
+2025-05-18 03:11:34 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 03:11:34 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 32d3154b-19a7-4c61-bafe-e898ffcb06b8)
+2025-05-18 03:11:34 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 5bd48c13-385e-4510-879d-61848074fb79)
+2025-05-18 03:29:01 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 5bd48c13-385e-4510-879d-61848074fb79, reason: disconnected for 1046+ seconds)
+2025-05-18 03:29:03 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 5bd48c13-385e-4510-879d-61848074fb79)
+2025-05-18 03:29:03 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 5bd48c13-385e-4510-879d-61848074fb79)
+2025-05-18 03:29:03 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 03:29:04 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 5bd48c13-385e-4510-879d-61848074fb79)
+2025-05-18 03:29:04 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305)
+2025-05-18 03:29:04 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 03:29:05 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 5bd48c13-385e-4510-879d-61848074fb79)
+2025-05-18 03:29:05 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305)
+2025-05-18 03:33:04 - 57865 - slack_bolt.App - connection.py:291 - ERROR - Failed to check the state of sock (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305, error: SSLEOFError, message: EOF occurred in violation of protocol (_ssl.c:2427))
+2025-05-18 04:02:27 - 57865 - slack_bolt.App - connection.py:291 - ERROR - Failed to check the state of sock (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305, error: SSLEOFError, message: EOF occurred in violation of protocol (_ssl.c:2427))
+2025-05-18 04:19:32 - 57865 - slack_bolt.App - connection.py:291 - ERROR - Failed to check the state of sock (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305, error: SSLEOFError, message: EOF occurred in violation of protocol (_ssl.c:2427))
+2025-05-18 04:26:45 - 57865 - slack_bolt.App - connection.py:291 - ERROR - Failed to check the state of sock (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305, error: SSLEOFError, message: EOF occurred in violation of protocol (_ssl.c:2427))
+2025-05-18 04:33:17 - 57865 - slack_bolt.App - connection.py:291 - ERROR - Failed to check the state of sock (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305, error: SSLEOFError, message: EOF occurred in violation of protocol (_ssl.c:2427))
+2025-05-18 04:33:17 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305)
+2025-05-18 04:33:17 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305)
+2025-05-18 04:33:17 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - connection.py:179 - ERROR - Failed to establish a connection (session id: a46a2d65-7c5e-431c-aa5e-1cd4d475de20, error: The read operation timed out)
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - client.py:248 - ERROR - on_error invoked (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305, error: TimeoutError, message: The read operation timed out)
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: a46a2d65-7c5e-431c-aa5e-1cd4d475de20)
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305)
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: a46a2d65-7c5e-431c-aa5e-1cd4d475de20)
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 04:49:05 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 4d53e0ad-055a-4cb1-8c8e-702c1f14a305)
+2025-05-18 05:01:24 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: a46a2d65-7c5e-431c-aa5e-1cd4d475de20)
+2025-05-18 05:01:24 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 05:18:48 - 57865 - slack_bolt.App - connection.py:179 - ERROR - Failed to establish a connection (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e, error: The read operation timed out)
+2025-05-18 05:18:48 - 57865 - slack_bolt.App - client.py:248 - ERROR - on_error invoked (session id: a46a2d65-7c5e-431c-aa5e-1cd4d475de20, error: TimeoutError, message: The read operation timed out)
+2025-05-18 05:18:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e)
+2025-05-18 05:18:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: a46a2d65-7c5e-431c-aa5e-1cd4d475de20)
+2025-05-18 05:18:48 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e)
+2025-05-18 05:18:48 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 05:25:07 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e)
+2025-05-18 05:25:07 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 06:13:45 - 57865 - slack_bolt.App - base_client.py:486 - ERROR - Failed to send a request to Slack API server: The read operation timed out
+2025-05-18 06:13:45 - 57865 - slack_bolt.App - client.py:288 - ERROR - Failed to check the current session or reconnect to the server (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e, error: TimeoutError, message: The read operation timed out)
+2025-05-18 06:28:47 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e)
+2025-05-18 06:28:47 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 06:28:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 9e7d1605-094a-4e26-9539-1f0332aaec3e)
+2025-05-18 06:28:48 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 44b36e8f-eb2d-4a7f-9a6d-910c9702e42a)
+2025-05-18 06:28:48 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 06:28:48 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 44b36e8f-eb2d-4a7f-9a6d-910c9702e42a)
+2025-05-18 06:28:48 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 06:36:06 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 44b36e8f-eb2d-4a7f-9a6d-910c9702e42a)
+2025-05-18 06:36:06 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 07699e8b-095d-4ebb-8453-6825e73e002d)
+2025-05-18 06:36:06 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 06:36:06 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 44b36e8f-eb2d-4a7f-9a6d-910c9702e42a)
+2025-05-18 06:36:06 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 07699e8b-095d-4ebb-8453-6825e73e002d)
+2025-05-18 06:36:06 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 06:36:09 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 07699e8b-095d-4ebb-8453-6825e73e002d)
+2025-05-18 06:36:09 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 781fe569-ed83-4e02-81f8-81c5d6e58fc4)
+2025-05-18 06:36:09 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 06:36:09 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 07699e8b-095d-4ebb-8453-6825e73e002d)
+2025-05-18 06:36:09 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 781fe569-ed83-4e02-81f8-81c5d6e58fc4)
+2025-05-18 06:36:09 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 06:36:12 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 781fe569-ed83-4e02-81f8-81c5d6e58fc4)
+2025-05-18 06:36:12 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: f5e8770a-d329-4231-b5b6-1015bf518d02)
+2025-05-18 06:36:12 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 06:36:12 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 781fe569-ed83-4e02-81f8-81c5d6e58fc4)
+2025-05-18 06:36:12 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: f5e8770a-d329-4231-b5b6-1015bf518d02)
+2025-05-18 06:49:44 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: f5e8770a-d329-4231-b5b6-1015bf518d02, reason: disconnected for 801+ seconds)
+2025-05-18 06:49:45 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: f5e8770a-d329-4231-b5b6-1015bf518d02)
+2025-05-18 06:49:45 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: f5e8770a-d329-4231-b5b6-1015bf518d02)
+2025-05-18 06:49:45 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 06:49:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: f5e8770a-d329-4231-b5b6-1015bf518d02)
+2025-05-18 06:49:48 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b)
+2025-05-18 06:49:48 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 06:49:48 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: f5e8770a-d329-4231-b5b6-1015bf518d02)
+2025-05-18 06:49:48 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b)
+2025-05-18 07:02:42 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b, reason: disconnected for 773+ seconds)
+2025-05-18 07:02:44 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b)
+2025-05-18 07:02:44 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b)
+2025-05-18 07:02:44 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - connection.py:179 - ERROR - Failed to establish a connection (session id: 1194b996-ca7f-4236-9e1c-579c9b3cb0c9, error: _ssl.c:989: The handshake operation timed out)
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - client.py:248 - ERROR - on_error invoked (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b, error: TimeoutError, message: _ssl.c:989: The handshake operation timed out)
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 1194b996-ca7f-4236-9e1c-579c9b3cb0c9)
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b)
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 1194b996-ca7f-4236-9e1c-579c9b3cb0c9)
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 07:18:36 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 39ceb57f-d66f-41f5-b2b6-5eb07dede63b)
+2025-05-18 07:29:50 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 1194b996-ca7f-4236-9e1c-579c9b3cb0c9)
+2025-05-18 07:29:50 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 07:33:12 - 57865 - slack_bolt.App - connection.py:179 - ERROR - Failed to establish a connection (session id: c3523f03-0d18-44f0-af0a-5cfcaf77c7e0, error: [Errno 54] Connection reset by peer)
+2025-05-18 07:33:12 - 57865 - slack_bolt.App - client.py:248 - ERROR - on_error invoked (session id: 1194b996-ca7f-4236-9e1c-579c9b3cb0c9, error: ConnectionResetError, message: [Errno 54] Connection reset by peer)
+2025-05-18 07:33:12 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: c3523f03-0d18-44f0-af0a-5cfcaf77c7e0)
+2025-05-18 07:33:12 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 1194b996-ca7f-4236-9e1c-579c9b3cb0c9)
+2025-05-18 07:33:12 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: c3523f03-0d18-44f0-af0a-5cfcaf77c7e0)
+2025-05-18 07:33:12 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 07:33:22 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: c3523f03-0d18-44f0-af0a-5cfcaf77c7e0)
+2025-05-18 07:33:22 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 07:33:23 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: c3523f03-0d18-44f0-af0a-5cfcaf77c7e0)
+2025-05-18 07:33:23 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca)
+2025-05-18 07:33:23 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 07:33:23 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca)
+2025-05-18 08:05:19 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca, reason: disconnected for 1916+ seconds)
+2025-05-18 08:05:21 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca)
+2025-05-18 08:05:21 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca)
+2025-05-18 08:05:21 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 08:05:23 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca)
+2025-05-18 08:05:23 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e)
+2025-05-18 08:05:23 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 08:05:23 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: f9e467f2-e04f-4ed4-b33c-c8a241ab5fca)
+2025-05-18 08:05:23 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e)
+2025-05-18 08:30:44 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e, reason: disconnected for 1521+ seconds)
+2025-05-18 08:30:47 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e)
+2025-05-18 08:30:47 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e)
+2025-05-18 08:30:47 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 08:30:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e)
+2025-05-18 08:30:48 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c)
+2025-05-18 08:30:48 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 08:30:48 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 409d1692-9dd0-41ad-875c-a0339a937d2e)
+2025-05-18 08:30:48 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c)
+2025-05-18 08:39:02 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c, reason: disconnected for 493+ seconds)
+2025-05-18 08:39:04 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c)
+2025-05-18 08:39:04 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c)
+2025-05-18 08:39:04 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 09:08:45 - 57865 - slack_bolt.App - base_client.py:486 - ERROR - Failed to send a request to Slack API server: <urlopen error _ssl.c:989: The handshake operation timed out>
+2025-05-18 09:08:47 - 57865 - slack_bolt.App - base_client.py:507 - INFO - Going to retry the same request: POST https://slack.com/api/apps.connections.open
+2025-05-18 09:08:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c)
+2025-05-18 09:08:48 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:08:48 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 09:08:48 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 0ee3fe83-f6b9-4bd5-9389-32ef8370891c)
+2025-05-18 09:08:48 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:24:27 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 661f73b4-217d-45e7-9163-d438ffe1d826, reason: disconnected for 939+ seconds)
+2025-05-18 09:24:27 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:24:27 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:24:27 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 09:49:40 - 57865 - slack_bolt.App - base_client.py:486 - ERROR - Failed to send a request to Slack API server: The read operation timed out
+2025-05-18 09:49:40 - 57865 - slack_bolt.App - client.py:288 - ERROR - Failed to check the current session or reconnect to the server (session id: 661f73b4-217d-45e7-9163-d438ffe1d826, error: TimeoutError, message: The read operation timed out)
+2025-05-18 09:49:50 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:49:50 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 09:49:52 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:49:52 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a)
+2025-05-18 09:49:52 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 09:49:52 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 661f73b4-217d-45e7-9163-d438ffe1d826)
+2025-05-18 09:49:52 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a)
+2025-05-18 10:04:52 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a, reason: disconnected for 899+ seconds)
+2025-05-18 10:04:52 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a)
+2025-05-18 10:04:52 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a)
+2025-05-18 10:04:52 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 10:04:53 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a)
+2025-05-18 10:04:53 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 52671d2a-a211-42f3-9602-0a901d09bf93)
+2025-05-18 10:04:53 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 10:04:53 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 06dcfa8b-4c17-4b4c-9915-29a6116ab15a)
+2025-05-18 10:04:53 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 52671d2a-a211-42f3-9602-0a901d09bf93)
+2025-05-18 10:32:48 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 52671d2a-a211-42f3-9602-0a901d09bf93, reason: disconnected for 1674+ seconds)
+2025-05-18 10:32:50 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 52671d2a-a211-42f3-9602-0a901d09bf93)
+2025-05-18 10:32:50 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 52671d2a-a211-42f3-9602-0a901d09bf93)
+2025-05-18 10:32:50 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 10:32:51 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 52671d2a-a211-42f3-9602-0a901d09bf93)
+2025-05-18 10:32:51 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f)
+2025-05-18 10:32:51 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 10:32:51 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 52671d2a-a211-42f3-9602-0a901d09bf93)
+2025-05-18 10:32:52 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f)
+2025-05-18 10:51:37 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f, reason: disconnected for 1115+ seconds)
+2025-05-18 10:51:39 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f)
+2025-05-18 10:51:39 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f)
+2025-05-18 10:51:39 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 10:51:40 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f)
+2025-05-18 10:51:40 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 20fc1565-982e-40fd-ab94-0810890fea0a)
+2025-05-18 10:51:40 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 10:51:40 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 898345c8-6ec5-4bf8-878f-145e22f8473f)
+2025-05-18 10:51:40 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 20fc1565-982e-40fd-ab94-0810890fea0a)
+2025-05-18 11:24:18 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 20fc1565-982e-40fd-ab94-0810890fea0a, reason: disconnected for 1958+ seconds)
+2025-05-18 11:29:38 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 20fc1565-982e-40fd-ab94-0810890fea0a)
+2025-05-18 11:29:38 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 20fc1565-982e-40fd-ab94-0810890fea0a)
+2025-05-18 11:29:38 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 11:29:39 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 20fc1565-982e-40fd-ab94-0810890fea0a)
+2025-05-18 11:29:39 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792)
+2025-05-18 11:29:39 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 11:29:40 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 20fc1565-982e-40fd-ab94-0810890fea0a)
+2025-05-18 11:29:40 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792)
+2025-05-18 11:33:45 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792, reason: disconnected for 246+ seconds)
+2025-05-18 11:33:48 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792)
+2025-05-18 11:33:48 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792)
+2025-05-18 11:33:48 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 11:33:49 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792)
+2025-05-18 11:33:49 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff)
+2025-05-18 11:33:49 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 11:33:49 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 8d5143d8-c7cc-4216-ad2d-9d7f9fa7b792)
+2025-05-18 11:33:49 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff)
+2025-05-18 12:07:30 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff, reason: disconnected for 2020+ seconds)
+2025-05-18 12:07:32 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff)
+2025-05-18 12:07:32 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff)
+2025-05-18 12:07:32 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 12:07:33 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff)
+2025-05-18 12:07:33 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0)
+2025-05-18 12:07:33 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 12:07:33 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: c84ba1ea-cfdd-4b03-aa61-314629a219ff)
+2025-05-18 12:07:33 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0)
+2025-05-18 12:32:27 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0, reason: disconnected for 1494+ seconds)
+2025-05-18 12:32:28 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0)
+2025-05-18 12:32:28 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0)
+2025-05-18 12:32:28 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 12:32:31 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0)
+2025-05-18 12:32:31 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 36de3fe4-2707-4921-9650-7d878771604d)
+2025-05-18 12:32:31 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 12:32:31 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: ee66e71b-4d75-45a1-b6f4-7388b08f5cb0)
+2025-05-18 12:32:31 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 36de3fe4-2707-4921-9650-7d878771604d)
+2025-05-18 12:34:46 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: 36de3fe4-2707-4921-9650-7d878771604d, reason: disconnected for 114+ seconds)
+2025-05-18 12:34:46 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 36de3fe4-2707-4921-9650-7d878771604d)
+2025-05-18 12:34:46 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 36de3fe4-2707-4921-9650-7d878771604d)
+2025-05-18 12:34:46 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 12:34:47 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 36de3fe4-2707-4921-9650-7d878771604d)
+2025-05-18 12:34:47 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0)
+2025-05-18 12:34:47 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 12:34:47 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: 36de3fe4-2707-4921-9650-7d878771604d)
+2025-05-18 12:34:47 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0)
+2025-05-18 12:51:46 - 57865 - slack_bolt.App - connection.py:273 - INFO - The connection seems to be stale. Disconnecting... (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0, reason: disconnected for 999+ seconds)
+2025-05-18 12:51:47 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0)
+2025-05-18 12:51:47 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0)
+2025-05-18 12:51:47 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - connection.py:179 - ERROR - Failed to establish a connection (session id: 38f1c27a-a5a8-47ec-ae28-f85e7abedeba, error: _ssl.c:989: The handshake operation timed out)
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - client.py:248 - ERROR - on_error invoked (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0, error: TimeoutError, message: _ssl.c:989: The handshake operation timed out)
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 38f1c27a-a5a8-47ec-ae28-f85e7abedeba)
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0)
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 38f1c27a-a5a8-47ec-ae28-f85e7abedeba)
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 13:06:47 - 57865 - slack_bolt.App - client.py:269 - INFO - Stopped receiving messages from a connection (session id: f5d45ba3-601e-4e99-ae70-9115ba4878d0)
+2025-05-18 13:06:57 - 57865 - slack_bolt.App - client.py:283 - INFO - The session seems to be already closed. Reconnecting... (session id: 38f1c27a-a5a8-47ec-ae28-f85e7abedeba)
+2025-05-18 13:06:57 - 57865 - slack_bolt.App - client.py:76 - INFO - Connecting to a new endpoint...
+2025-05-18 13:06:58 - 57865 - slack_bolt.App - connection.py:195 - INFO - The connection has been closed (session id: 38f1c27a-a5a8-47ec-ae28-f85e7abedeba)
+2025-05-18 13:06:58 - 57865 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 6c134537-af5b-4d96-8628-95a117a4900f)
+2025-05-18 13:06:58 - 57865 - slack_bolt.App - client.py:79 - INFO - Connected to a new endpoint...
+2025-05-18 13:06:58 - 57865 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 6c134537-af5b-4d96-8628-95a117a4900f)

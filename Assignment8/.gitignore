@@ -1,0 +1,5 @@
+assignment_backup/venv
+credentials.json
+# Ignore Python bytecode files
+__pycache__/
+.DS_Store

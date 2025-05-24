@@ -1,0 +1,54 @@
+2025-05-18 13:12:44 - 3815 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 2e7b44b7-af2f-4f4f-bcd7-8c96b600a75a)
+2025-05-18 13:12:44 - 3815 - slack_bolt.App - base_handler.py:51 - INFO - ⚡️ Bolt app is running!
+2025-05-18 13:12:44 - 3815 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 2e7b44b7-af2f-4f4f-bcd7-8c96b600a75a)
+2025-05-18 13:13:18 - 3815 - sse_client.py:handle_messages - sse_client.py:108 - INFO - Received message from U03Q0MQT6RZ in C08SGJ6UEF8 (type: group): what does ppcc mean?
+2025-05-18 13:13:18 - 3815 - sse_client.py:handle_messages - sse_client.py:116 - INFO - Running async client for user U03Q0MQT6RZ in channel C08SGJ6UEF8
+2025-05-18 13:13:18 - 3815 - memory_handler - memory_handler.py:13 - INFO - State file state.json has been removed.
+2025-05-18 13:13:18 - 3815 - mcp.client.sse - sse.py:47 - INFO - Connecting to SSE endpoint: http://localhost:3000/sse
+2025-05-18 13:13:18 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: GET http://localhost:3000/sse "HTTP/1.1 200 OK"
+2025-05-18 13:13:18 - 3815 - mcp.client.sse - sse.py:67 - INFO - Received endpoint URL: http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4
+2025-05-18 13:13:18 - 3815 - mcp.client.sse - sse.py:140 - INFO - Starting post writer with endpoint URL: http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4
+2025-05-18 13:13:18 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4 "HTTP/1.1 202 Accepted"
+2025-05-18 13:13:18 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4 "HTTP/1.1 202 Accepted"
+2025-05-18 13:13:18 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4 "HTTP/1.1 202 Accepted"
+2025-05-18 13:13:18 - 3815 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 1 ---
+2025-05-18 13:13:20 - 3815 - paypal_transport_injection - paypal_transport_injection.py:71 - INFO - Create paypal_transport_injection gRPC channel
+2025-05-18 13:13:25 - 3815 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'acronym_search', 'params': ['PPCC'], 'final_ans': 'None', 'reasoning_type': 'search'}
+2025-05-18 13:13:25 - 3815 - action_performer - action_performer.py:11 - INFO - params are: ['PPCC']
+2025-05-18 13:13:25 - 3815 - action_performer - action_performer.py:16 - INFO - param_name: ACRONYM, info: {'title': 'ACRONYM', 'type': 'string'}
+2025-05-18 13:13:25 - 3815 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['PPCC']
+2025-05-18 13:13:25 - 3815 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: PPCC
+2025-05-18 13:13:25 - 3815 - action_performer - action_performer.py:41 - INFO - string value: PPCC
+2025-05-18 13:13:25 - 3815 - action_performer - action_performer.py:49 - INFO - Sending argument: {'ACRONYM': 'PPCC'}
+2025-05-18 13:13:25 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4 "HTTP/1.1 202 Accepted"
+2025-05-18 13:13:26 - 3815 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'acronym_search', 'params': [], 'final_ans': 'None', 'reasoning_type': 'search'}, 'tool': 'acronym_search', 'params': {'ACRONYM': 'PPCC'}, 'result': {'0': 'PayPal Credit Card', '1': 'PayPal Command Center', '2': 'PayPal Certified Charities', '3': 'PayPal Confirmed Charities', '4': 'PayPal Cash Card', '5': 'PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card', '6': 'PayPal Credit Collections'}}
+2025-05-18 13:13:26 - 3815 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 2 ---
+2025-05-18 13:13:27 - 3815 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'post_slack_message', 'params': ['PayPal Credit Card', 'PayPal Command Center', 'PayPal Certified Charities', 'PayPal Confirmed Charities', 'PayPal Cash Card', 'PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card', 'PayPal Credit Collections'], 'final_ans': 'None', 'reasoning_type': 'search'}
+2025-05-18 13:13:27 - 3815 - action_performer - action_performer.py:11 - INFO - params are: ['PayPal Credit Card', 'PayPal Command Center', 'PayPal Certified Charities', 'PayPal Confirmed Charities', 'PayPal Cash Card', 'PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card', 'PayPal Credit Collections']
+2025-05-18 13:13:27 - 3815 - action_performer - action_performer.py:16 - INFO - param_name: data, info: {'title': 'data', 'type': 'string'}
+2025-05-18 13:13:27 - 3815 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['PayPal Credit Card', 'PayPal Command Center', 'PayPal Certified Charities', 'PayPal Confirmed Charities', 'PayPal Cash Card', 'PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card', 'PayPal Credit Collections']
+2025-05-18 13:13:27 - 3815 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: PayPal Credit Card
+2025-05-18 13:13:27 - 3815 - action_performer - action_performer.py:41 - INFO - string value: • PayPal Credit Card
+• PayPal Command Center
+• PayPal Certified Charities
+• PayPal Confirmed Charities
+• PayPal Cash Card
+• PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card
+• PayPal Credit Collections
+2025-05-18 13:13:27 - 3815 - action_performer - action_performer.py:49 - INFO - Sending argument: {'data': '• PayPal Credit Card\n• PayPal Command Center\n• PayPal Certified Charities\n• PayPal Confirmed Charities\n• PayPal Cash Card\n• PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card\n• PayPal Credit Collections'}
+2025-05-18 13:13:27 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4 "HTTP/1.1 202 Accepted"
+2025-05-18 13:13:28 - 3815 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'post_slack_message', 'params': ['PayPal Command Center', 'PayPal Certified Charities', 'PayPal Confirmed Charities', 'PayPal Cash Card', 'PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card', 'PayPal Credit Collections'], 'final_ans': 'None', 'reasoning_type': 'search'}, 'tool': 'post_slack_message', 'params': {'data': '• PayPal Credit Card\n• PayPal Command Center\n• PayPal Certified Charities\n• PayPal Confirmed Charities\n• PayPal Cash Card\n• PayPal Command Center / PayPal Certified Charities / PayPal Confirmed Charities / PP Credit Card\n• PayPal Credit Collections'}, 'result': 'Message sent successfully'}
+2025-05-18 13:13:28 - 3815 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 3 ---
+2025-05-18 13:13:30 - 3815 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'finish_task', 'params': ['The acronym details were successfully fetched and the details were posted in Slack.'], 'final_ans': 'Task completed successfully.', 'reasoning_type': 'success'}
+2025-05-18 13:13:30 - 3815 - action_performer - action_performer.py:11 - INFO - params are: ['The acronym details were successfully fetched and the details were posted in Slack.']
+2025-05-18 13:13:30 - 3815 - action_performer - action_performer.py:16 - INFO - param_name: message, info: {'title': 'Message', 'type': 'string'}
+2025-05-18 13:13:30 - 3815 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['The acronym details were successfully fetched and the details were posted in Slack.']
+2025-05-18 13:13:30 - 3815 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: The acronym details were successfully fetched and the details were posted in Slack.
+2025-05-18 13:13:30 - 3815 - action_performer - action_performer.py:41 - INFO - string value: The acronym details were successfully fetched and the details were posted in Slack.
+2025-05-18 13:13:30 - 3815 - action_performer - action_performer.py:49 - INFO - Sending argument: {'message': 'The acronym details were successfully fetched and the details were posted in Slack.'}
+2025-05-18 13:13:30 - 3815 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=3c191b60fdbb4ce58ccbe4bbe61187e4 "HTTP/1.1 202 Accepted"
+2025-05-18 13:13:30 - 3815 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'finish_task', 'params': [], 'final_ans': 'Task completed successfully.', 'reasoning_type': 'success'}, 'tool': 'finish_task', 'params': {'message': 'The acronym details were successfully fetched and the details were posted in Slack.'}, 'result': {'response': 'The acronym details were successfully fetched and the details were posted in Slack.'}}
+2025-05-18 13:13:30 - 3815 - sse_client.py:handle_messages - sse_client.py:121 - INFO - Response from async client: {'response': 'The acronym details were successfully fetched and the details were posted in Slack.'}

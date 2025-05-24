@@ -1,0 +1,47 @@
+2025-05-17 23:25:57 - 55965 - slack_bolt.App - client.py:193 - INFO - A new session has been established (session id: 9a046e59-0925-4183-92de-6343c08e35da)
+2025-05-17 23:25:57 - 55965 - slack_bolt.App - base_handler.py:51 - INFO - ⚡️ Bolt app is running!
+2025-05-17 23:25:57 - 55965 - slack_bolt.App - client.py:266 - INFO - Starting to receive messages from a new connection (session id: 9a046e59-0925-4183-92de-6343c08e35da)
+2025-05-17 23:26:11 - 55965 - sse_client.py:handle_messages - sse_client.py:108 - INFO - Received message from U03Q0MQT6RZ in C08SGJ6UEF8 (type: group): what is PSCD?
+2025-05-17 23:26:11 - 55965 - sse_client.py:handle_messages - sse_client.py:116 - INFO - Running async client for user U03Q0MQT6RZ in channel C08SGJ6UEF8
+2025-05-17 23:26:12 - 55965 - mcp.client.sse - sse.py:47 - INFO - Connecting to SSE endpoint: http://localhost:3000/sse
+2025-05-17 23:26:12 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: GET http://localhost:3000/sse "HTTP/1.1 200 OK"
+2025-05-17 23:26:12 - 55965 - mcp.client.sse - sse.py:67 - INFO - Received endpoint URL: http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b
+2025-05-17 23:26:12 - 55965 - mcp.client.sse - sse.py:140 - INFO - Starting post writer with endpoint URL: http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b
+2025-05-17 23:26:12 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b "HTTP/1.1 202 Accepted"
+2025-05-17 23:26:12 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b "HTTP/1.1 202 Accepted"
+2025-05-17 23:26:12 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b "HTTP/1.1 202 Accepted"
+2025-05-17 23:26:12 - 55965 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 1 ---
+2025-05-17 23:26:14 - 55965 - paypal_transport_injection - paypal_transport_injection.py:71 - INFO - Create paypal_transport_injection gRPC channel
+2025-05-17 23:26:18 - 55965 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'acronym_search', 'params': ['PSCD'], 'final_ans': 'None', 'reasoning_type': 'search'}
+2025-05-17 23:26:18 - 55965 - action_performer - action_performer.py:11 - INFO - params are: ['PSCD']
+2025-05-17 23:26:18 - 55965 - action_performer - action_performer.py:16 - INFO - param_name: ACRONYM, info: {'title': 'ACRONYM', 'type': 'string'}
+2025-05-17 23:26:18 - 55965 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['PSCD']
+2025-05-17 23:26:18 - 55965 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: PSCD
+2025-05-17 23:26:18 - 55965 - action_performer - action_performer.py:41 - INFO - string value: PSCD
+2025-05-17 23:26:18 - 55965 - action_performer - action_performer.py:49 - INFO - Sending argument: {'ACRONYM': 'PSCD'}
+2025-05-17 23:26:18 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b "HTTP/1.1 202 Accepted"
+2025-05-17 23:26:19 - 55965 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'acronym_search', 'params': [], 'final_ans': 'None', 'reasoning_type': 'search'}, 'tool': 'acronym_search', 'params': {'ACRONYM': 'PSCD'}, 'result': {'0': 'PayPal subscribed communication dashboard'}}
+2025-05-17 23:26:19 - 55965 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 2 ---
+2025-05-17 23:26:21 - 55965 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'post_slack_message', 'params': ['PayPal subscribed communication dashboard'], 'final_ans': 'None', 'reasoning_type': 'search'}
+2025-05-17 23:26:21 - 55965 - action_performer - action_performer.py:11 - INFO - params are: ['PayPal subscribed communication dashboard']
+2025-05-17 23:26:21 - 55965 - action_performer - action_performer.py:16 - INFO - param_name: data, info: {'title': 'data', 'type': 'string'}
+2025-05-17 23:26:21 - 55965 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['PayPal subscribed communication dashboard']
+2025-05-17 23:26:21 - 55965 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: PayPal subscribed communication dashboard
+2025-05-17 23:26:21 - 55965 - action_performer - action_performer.py:41 - INFO - string value: PayPal subscribed communication dashboard
+2025-05-17 23:26:21 - 55965 - action_performer - action_performer.py:49 - INFO - Sending argument: {'data': 'PayPal subscribed communication dashboard'}
+2025-05-17 23:26:21 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b "HTTP/1.1 202 Accepted"
+2025-05-17 23:26:22 - 55965 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'post_slack_message', 'params': [], 'final_ans': 'None', 'reasoning_type': 'search'}, 'tool': 'post_slack_message', 'params': {'data': 'PayPal subscribed communication dashboard'}, 'result': 'Message sent successfully'}
+2025-05-17 23:26:22 - 55965 - __main__ - sse_client.py:48 - INFO - 
+--- Iteration 3 ---
+2025-05-17 23:26:23 - 55965 - __main__ - sse_client.py:60 - INFO - Parsed llm response: {'function_name': 'finish_task', 'params': ['The acronym details were successfully fetched and the details were posted in Slack.'], 'final_ans': 'Task completed successfully.', 'reasoning_type': 'success'}
+2025-05-17 23:26:23 - 55965 - action_performer - action_performer.py:11 - INFO - params are: ['The acronym details were successfully fetched and the details were posted in Slack.']
+2025-05-17 23:26:23 - 55965 - action_performer - action_performer.py:16 - INFO - param_name: message, info: {'title': 'Message', 'type': 'string'}
+2025-05-17 23:26:23 - 55965 - action_performer - action_performer.py:19 - INFO - param type: <class 'list'> value: ['The acronym details were successfully fetched and the details were posted in Slack.']
+2025-05-17 23:26:23 - 55965 - action_performer - action_performer.py:22 - INFO - ptype: string, value type: <class 'str'> value: The acronym details were successfully fetched and the details were posted in Slack.
+2025-05-17 23:26:23 - 55965 - action_performer - action_performer.py:41 - INFO - string value: The acronym details were successfully fetched and the details were posted in Slack.
+2025-05-17 23:26:23 - 55965 - action_performer - action_performer.py:49 - INFO - Sending argument: {'message': 'The acronym details were successfully fetched and the details were posted in Slack.'}
+2025-05-17 23:26:23 - 55965 - httpx - _client.py:1740 - INFO - HTTP Request: POST http://localhost:3000/messages/?session_id=4e7f5e2561ef419bb717ecf31322853b "HTTP/1.1 202 Accepted"
+2025-05-17 23:26:23 - 55965 - __main__ - sse_client.py:73 - INFO - Tool execution result: {'llm_response': {'function_name': 'finish_task', 'params': [], 'final_ans': 'Task completed successfully.', 'reasoning_type': 'success'}, 'tool': 'finish_task', 'params': {'message': 'The acronym details were successfully fetched and the details were posted in Slack.'}, 'result': {'response': 'The acronym details were successfully fetched and the details were posted in Slack.'}}
+2025-05-17 23:26:23 - 55965 - sse_client.py:handle_messages - sse_client.py:121 - INFO - Response from async client: {'response': 'The acronym details were successfully fetched and the details were posted in Slack.'}

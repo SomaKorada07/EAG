@@ -1,0 +1,47 @@
+
++---------------------------------------------------------------------------------------------------+
+|                                    Agentic AI System Architecture                                 |
++---------------------------------------------------------------------------------------------------+
+
+                             +-----------------+
+                             |                 |
+                             |  Slack Users    |
+                             |                 |
+                             +---------+-------+
+                                       |
+                                       | Messages
+                                       v
++-----------------+          +---------+-------+          +-------------------+
+|                 |  Tools   |                 |  Query   |                   |
+| MCP SSE Server  <----------+  SSE Client     +--------->| LLM Perception    |
+|                 |          |                 |          |                   |
++-----------------+          +---------+-------+          +-------------------+
+        ^                              |                           |
+        |                              |                           |
+        |                              v                           v
++-------+---------+          +---------+-------+          +-------------------+
+|                 |          |                 |          |                   |
+| External APIs   |          | Decision Maker  |<---------+ Action Performer  |
+|                 |          |                 |          |                   |
++-----------------+          +---------+-------+          +-------------------+
+                                       |
+                                       |
+                                       v
+                             +---------+-------+          +-------------------+
+                             |                 |          |                   |
+                             | Memory Handler  |          | Logging System    |
+                             |                 |          |                   |
+                             +-----------------+          +-------------------+
+
++---------------------------------------------------------------------------------------------------+
+|                                         Data Flow                                                 |
++---------------------------------------------------------------------------------------------------+
+
+1. User sends message to Slack Bot
+2. SSE Client receives message and starts agent workflow
+3. LLM Perception generates decision using Gemini 2.0
+4. Decision Maker determines next action based on LLM response
+5. Action Performer executes the appropriate tool
+6. MCP SSE Server provides tools like acronym_search and post_slack_message
+7. Memory Handler maintains state across iterations
+8. Logging System records all activities with timestamps
